@@ -1,0 +1,45 @@
+.Dd 01/12/2019
+.Dt simple_shell
+.Os Linux
+.Sh NAME
+.Nm simple_shell - hsh
+.Nd minimalistic version of command line interpreter (shell).
+.Sh SYNOPSIS
+.Pp
+Fl ./hsh
+.Pp
+Fl int _printf (const char *format, ...);
+.Sh DESCRIPTION
+simple_shell is a minimalistic version of a command line interpreter. This was created to work on a linux operative system.
+.Pp
+.Fl Overview
+texto aquí
+.Pp
+.Fl Invocation
+.Pp
+texto aquí
+.Pp
+.Fl Argument list processing
+texto aquí
+.Pp
+.Fl Builtings
+.Pp
+.Sh EXIT STATUS
+texto aquí
+.Pp
+.Sh Environment
+texto aquí
+.Pp
+.Sh FILES
+texto aquí
+.Pp
+.Sh BUGS
+texto aquí
+.Pp
+.Sh AUTHORS
+.Pp
+Diego Betancourt
+.Pp
+Jackson Martínez
+.Pp
+City: HOLBERTON CAL
