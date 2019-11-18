@@ -39,4 +39,4 @@ Compiled with Ubuntu 14.04 LTS using flags -Wall -Werror -Wextra and -pedantic.
 
 ## Authors
 Diego Betancourt
-Jackson Martínez
+Jackson Moreno
