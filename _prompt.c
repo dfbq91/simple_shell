@@ -1,18 +1,17 @@
 #include "holberton.h"
 
 /**
- * prompt - Print prompt ($ ) and call fun for to split a string
+ * _prompt - Print prompt ($ ) and call fun for to split a string
  *
- * Return: ....
+ * Return: never returns
  */
 
 char *_prompt(void)
 {
-	size_t bytes_rd;
-	size_t n_bytes = 100;
+	int bytes_rd;
+	size_t n_bytes = 1024;
 	char *str;
 	char *command;
-	pid_t childp;
 
 	str = malloc(n_bytes + 1);
 	while (1)
@@ -20,7 +19,7 @@ char *_prompt(void)
 		printf("$ ");
 		bytes_rd = getline(&str, &n_bytes, stdin);
 		if (bytes_rd == -1)
-			perror("Error");
+			perror("Getline Error");
 
 		command = token(str);
 		executor(command);

@@ -8,9 +8,6 @@
 
 int main(void)
 {
-	char *command;
-
-	command = _prompt();
-	executor(command);
+	_prompt();
 	return (0);
 }

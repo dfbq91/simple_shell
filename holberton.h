@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/wait.h>
 
 int _putchar(char c);
 char *_prompt(void);

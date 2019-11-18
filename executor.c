@@ -9,18 +9,29 @@
 int executor(char *token)
 {
 	char *argv[2];
-	int cmp;
+	int pid;
+	int i;
+
+	for (i = 0; token[i] != '\n'; i++)
+		;
+
+	token[i] = '\0';
 
 	/*printf("Este token es impreso desde executor: %s\n", token);*/
 	argv[0] = token;
 	argv[1] = NULL;
-	printf("Imprime: .%s.\n", argv[0]);
-	printf("./bin/ls.\n");
 
-	printf("%d\n", cmp);
-	if (execve(argv[0], argv, NULL) == -1)
+	pid = fork();
+	if (pid == 0) /* Lo ejecuta solo el hijo y termina con execve*/
 	{
-		perror("Error");
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			perror("Execve Error");
+		}
 	}
+	else if (pid > 0)
+		wait(NULL);
+	else
+		perror("Fork Error");
 	return (0);
 }
