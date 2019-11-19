@@ -11,6 +11,6 @@ char *token(char *str)
 	char *token;
 
 	token = strtok(str, " ");
-	
+
 	return (token);
 }
