@@ -6,36 +6,51 @@
  * Return: never returns
  */
 
-char *_prompt(void)
+int dollar();
+char **_prompt(void)
 {
-	int bytes_rd;
+	int bytes_rd = 0;
 	size_t n_bytes = 1024;
 	char *str;
-	char *command;
+	char **command;
 
 	str = malloc(n_bytes + 1);
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-		{
-			printf("$ ");
-
-		}
+			dollar(); /*Llama a la función dollar que imprime el dolar*/
 
 		bytes_rd = getline(&str, &n_bytes, stdin);
 
 		if (bytes_rd == 1) /*Si no se ingresa nada en el shell*/
 			continue;
 
-		if (bytes_rd == -1 && (isatty(STDIN_FILENO)) == 0)
+		if (bytes_rd == EOF)
+		{
+			_putchar('\n');
+			exit(0);
+		}
+
+		if (bytes_rd == -1)
 		{
 			perror("Getline Error");
-			exit(0);
 		}
 		command = token(str);
 		executor(command);
 	}
 
 	return (command);
+}
+
+/**
+ * dollar - prints dollar and space to the prompt
+ *
+ * Return: On sucess 2.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int dollar()
+{
+	char c[2] = "$ ";
+	return(write(1, &c, 2));
 }

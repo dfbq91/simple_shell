@@ -6,11 +6,40 @@
  * Return: array of each word of the string splited.
  */
 
-char *token(char *str)
+char **token(char *str)
 {
 	char *token;
+	char **tokencomplete;
+	int tokenposition = 0;
+	int i;
+
+	for (i = 0; str[i] != '\n'; i++)
+                ;
+
+        str[i] = '\0';
+
+	tokencomplete = malloc(5 * sizeof(char*));
+
+	if (tokencomplete == NULL)
+        {
+                free(tokencomplete);
+                exit(EXIT_FAILURE);
+        }
 
 	token = strtok(str, " ");
 
-	return (token);
+	while (token != NULL)
+	{
+		printf("%s\n", token);
+		tokencomplete[tokenposition] = token;
+		tokenposition++;
+		token = strtok(NULL, " ");
+	}
+	tokencomplete[tokenposition] = NULL;
+	printf("%s\n", *tokencomplete);
+
+	if (token == NULL)
+		free(token);
+
+	return (tokencomplete);
 }

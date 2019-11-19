@@ -13,8 +13,8 @@
 #include <sys/wait.h>
 
 int _putchar(char c);
-char *_prompt(void);
-int executor(char *token);
-char *token(char *str);
+char **_prompt(void);
+int executor(char **token);
+char **token(char *str);
 
 #endif
