@@ -6,7 +6,6 @@
  * Return: never returns
  */
 
-int dollar();
 char **_prompt(void)
 {
 	int bytes_rd = 0;
@@ -49,8 +48,10 @@ char **_prompt(void)
  * Return: On sucess 2.
  * On error, -1 is returned, and errno is set appropriately.
  */
+/*
 int dollar()
 {
 	char c[2] = "$ ";
 	return(write(1, &c, 2));
 }
+*/

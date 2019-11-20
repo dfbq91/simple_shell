@@ -18,7 +18,8 @@ char **token(char *str)
 
         str[i] = '\0';
 
-	tokencomplete = malloc(5 * sizeof(char*));
+	printf("%d\n", i);
+	tokencomplete = malloc(i * sizeof(char*));
 
 	if (tokencomplete == NULL)
         {
