@@ -17,6 +17,7 @@ char **_prompt(void)
 
 	while (1)
 	{
+		fflush(stdin);
 		if (isatty(STDIN_FILENO))
 			dollar(); /*Llama a la función dollar que imprime el dolar*/
 

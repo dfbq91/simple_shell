@@ -15,11 +15,12 @@ int executor(char **token)
 		exit(0);
 
 	pid = fork();
-	if (pid == 0) /* Lo ejecuta solo el hijo y termina con execve*/
+	if (pid == 0) /* Lo ejecuta solo el hijo y termina con execve */
 	{
 		if (execve(token[0], token, NULL) == -1)
 		{
-			perror("Error:");
+			/** perror("Error:"); */
+			close(STDIN_FILENO);
 		}
 	}
 	else if (pid > 0)
