@@ -41,17 +41,3 @@ char **_prompt(void)
 
 	return (command);
 }
-
-/**
- * dollar - prints dollar and space to the prompt
- *
- * Return: On sucess 2.
- * On error, -1 is returned, and errno is set appropriately.
- */
-/*
-int dollar()
-{
-	char c[2] = "$ ";
-	return(write(1, &c, 2));
-}
-*/

@@ -79,3 +79,46 @@ void command_err_message(char *is_not_command)
 	_putchar('\n');
 }
 */
+
+/**
+ * _strcat - Concatenate two strings.
+ *@dest: destiny string that will contain concatenated string
+ *@src: source string to concatenate to dest.
+ * Return: dest as two strings concatenated.
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int i = 0;
+	int j = 0;
+
+	for (i = 0; dest[i] != '\0'; ++i)
+		;
+
+	for (j = 0; src[j] != '\0'; ++j, ++i)
+	{
+		dest[i] = src[j];
+	}
+	dest[i + 1] = '\0';
+	return (dest);
+}
+
+/**
+ * _strcpy - copy a string into a buffer pointed
+ * @dest: char type array pointer
+ * @src: char type integer variable
+ * Return: dest
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int j = 0;
+
+	while (src[j] != '\0')
+	{
+		dest[j] = src[j];
+		j++;
+	}
+	dest[j] = '\0';
+	return (dest);
+}

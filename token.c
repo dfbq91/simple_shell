@@ -8,7 +8,7 @@
 
 char **token(char *str)
 {
-	char *token;
+	char *token, *dup;
 	char **tokencomplete;
 	int tokenposition = 0;
 	int i;
@@ -26,8 +26,9 @@ char **token(char *str)
                 free(tokencomplete);
                 exit(EXIT_FAILURE);
         }
-
-	token = strtok(str, " ");
+	dup = strdup(str);
+	printf("dup: %s\n", dup);
+	token = strtok(dup, " ");
 
 	while (token != NULL)
 	{
@@ -37,7 +38,7 @@ char **token(char *str)
 		token = strtok(NULL, " ");
 	}
 	tokencomplete[tokenposition] = NULL;
-	printf("%s\n", *tokencomplete);
+	printf("%s %d: %s\n",__FILE__, __LINE__, *tokencomplete);
 
 	if (token == NULL)
 		free(token);

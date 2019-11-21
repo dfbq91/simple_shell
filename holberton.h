@@ -20,5 +20,8 @@ int _strcmp(char *s1, char *s2);
 int dollar();
 void command_err_message(char *is_not_command);
 int getlenght(char *str);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+void searchpath(char **str);
 
 #endif
