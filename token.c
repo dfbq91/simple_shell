@@ -8,27 +8,26 @@
 
 char **token(char *str)
 {
-	char *token, *dup;
+	char *token;
 	char **tokencomplete;
 	int tokenposition = 0;
 	int i;
 
 	for (i = 0; str[i] != '\n'; i++)
-                ;
+		;
 
-        str[i] = '\0';
+	str[i] = '\0';
 
 	printf("%d\n", i);
-	tokencomplete = malloc(i * sizeof(char*));
+	tokencomplete = malloc(i * sizeof(char *));
 
 	if (tokencomplete == NULL)
-        {
-                free(tokencomplete);
-                exit(EXIT_FAILURE);
-        }
-	dup = strdup(str);
-	printf("dup: %s\n", dup);
-	token = strtok(dup, " ");
+	{
+		free(tokencomplete);
+		exit(0);
+	}
+
+	token = strtok(str, " ");
 
 	while (token != NULL)
 	{
@@ -38,10 +37,6 @@ char **token(char *str)
 		token = strtok(NULL, " ");
 	}
 	tokencomplete[tokenposition] = NULL;
-	printf("%s %d: %s\n",__FILE__, __LINE__, *tokencomplete);
-
-	if (token == NULL)
-		free(token);
 
 	return (tokencomplete);
 }

@@ -11,6 +11,7 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 int _putchar(char c);
 char **_prompt(void);
@@ -22,6 +23,7 @@ void command_err_message(char *is_not_command);
 int getlenght(char *str);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
-void searchpath(char **str);
+char *searchpath(char **str);
+void siginthandler(int sig_int);
 
 #endif

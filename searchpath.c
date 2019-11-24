@@ -1,46 +1,67 @@
 #include "holberton.h"
 
+void *_getenv(const char *name)
+{
+	char **env = __environ;
+	char **ptr;
+	char *token;
+
+	for (**ptr = **env; *ptr != name; ptr++)
+		;
+	return(*ptr);
+}
+
 /**
  * searchpath - take a string(command) for to search its path
  * @str: string to concatenate with a path.
  * Return: nothing.
  */
 
-void searchpath(char **str)
+char *searchpath(char **str)
 {
-	char *firstpath = malloc(100);
-	char *secondpath = malloc(100);
-	char *thirdpath = malloc(100);
+	char *envi = getenv("PATH");
+	int i = 0;
+	char *token;
+	char *newpath = malloc(50);
+	char **pathtocheck;
+	int position = 0;
+	char *slash = malloc(50);
 	struct stat st;
 
-	_strcpy(firstpath, "/bin/");
-	_strcpy(secondpath, "/usr/bin/");
-	_strcpy(thirdpath, "/usr/bin/");
-
-	_strcat(firstpath, str[0]);
-	_strcat(secondpath, str[0]);
-	_strcat(thirdpath, str[0]);
-
-	if (stat(firstpath, &st) == 0)
+	pathtocheck = malloc(300);
+	if (pathtocheck == NULL)
 	{
-		str[0] = firstpath;
-		puts("pasó por first\n");
-		return;
+		free(pathtocheck);
+		exit(EXIT_FAILURE);
 	}
 
-	if (stat(secondpath, &st) == 0)
+	/*Agrega "/" al input*/
+	_strcpy(slash, "/");
+	_strcat(slash, str[0]);
+
+	token = strtok(envi, "=");
+	printf("Complete path: %s\n", token);
+	token = strtok(token, ":");
+	printf("tokenpreliminar %s\n\n", token);
+
+	while (token != NULL)
 	{
-		str[0] = secondpath;
-		puts("pasó por second\n");
-		return;
+		printf("Path: %s\n", token);
+
+		pathtocheck[position] = token;
+
+		_strcpy(newpath, pathtocheck[position]);
+		_strcat(newpath, slash);
+
+		printf("The newpath: %s\n", newpath);
+
+		/*if (stat(pathtocheck[position], &st) == 0)
+		  return (pathtocheck[position]);*/
+		position++;
+		token = strtok(NULL, ":");
 	}
 
-	if (stat(thirdpath, &st) == 0)
-	{
-		str[0] = thirdpath;
-		puts("pasó por third\n");
-		return;
+	pathtocheck[position] = NULL;
 
-	}
-	puts("no pasó por ninguno\n");
+	return(*pathtocheck);
 }

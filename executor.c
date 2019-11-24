@@ -10,17 +10,24 @@ int executor(char **token)
 {
 	int pid;
 	char *goexit = "exit";
+	char *newstr;
 
 	if (_strcmp(token[0], goexit) == 0)
+	{
+		free(token[0]);
+		free(token);
 		exit(0);
+	}
 
-	searchpath(token);
+	newstr = searchpath(token);
 
 	pid = fork();
 	if (pid == 0) /* Lo ejecuta solo el hijo y termina con execve*/
 	{
-		if (execve(token[0], token, NULL) == -1)
+		if (execve(newstr, token, NULL) == -1)
 		{
+			free(newstr);
+			free(token);
 			close(STDIN_FILENO);
 		}
 	}
@@ -28,5 +35,7 @@ int executor(char **token)
 		wait(NULL);
 	else
 		perror("Fork Error");
+
+	free(token);
 	return (0);
 }

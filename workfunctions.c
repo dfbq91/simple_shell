@@ -19,17 +19,6 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
-* dollar - prints dollar and space to the prompt
-* Return: On sucess 2.
-* On error, -1 is returned, and errno is set appropriately.
-*/
-int dollar()
-{
-        char c[2] = "$ ";
-        return(write(1, &c, 2));
-}
-
-/**
  * _putchar - writes the character c to stdout
  * @c: The character to print
  * Return: On success 1.
@@ -121,4 +110,15 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[j] = '\0';
 	return (dest);
+}
+
+/**
+ * siginthandler - keep shell when user press control + c
+ * @sig_int: handler
+ * Return: nothing
+ */
+void siginthandler(int sig_int)
+{
+	signal(SIGINT, siginthandler);
+	fflush(stdout);
 }
