@@ -1,4 +1,4 @@
-B# simple_shell
+# simple_shell
 
 ## Table of contents
 * Description
@@ -12,7 +12,9 @@ B# simple_shell
 * Authors
 
 ## Description
-Simple shell (./hsh) is a command line interpreter inspirated in ./sh shell. It was created with system calls and standard function like fork, wait, getline, wait, stat, malloc, free, perror, and others.
+Simple shell (./hsh) is a command line interpreter inspirated in ./sh shell. 
+It was created with system calls and standard function like 
+` fork(), wait(), getline, stat, malloc, free, perror, and others. `
 When a command is executed, the program will made the action that the user wish and will print the shell prompt again ($).
 
 
