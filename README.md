@@ -56,12 +56,13 @@ workfunctions.c - Customized Functions called in other files.
 - [x] GFM task list 1
 - [x] GFM task list 1
 ## Using example
-`vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ ./hsh<br />
+```
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ ./hsh<br />
 $ ls<br />
 AUTHORS  README.md  _prompt.c  executor.c  holberton.h  hsh  main.c  man_1_simple_shell  searchpath.c  token.c  workfunctions.c<br />
-$`
+$
 <br />
-`$ ls -l  
+$ ls -l  
 total 56  
 -rw-rw-r-- 1 vagrant vagrant   180 Nov 23 19:28 AUTHORS  
 -rw-rw-r-- 1 vagrant vagrant   823 Nov 23 19:28 README.md  
@@ -74,8 +75,10 @@ total 56
 -rw-rw-r-- 1 vagrant vagrant   831 Nov 23 19:28 searchpath.c<br />
 -rw-rw-r-- 1 vagrant vagrant   892 Nov 23 19:28 token.c<br />
 -rw-rw-r-- 1 vagrant vagrant  2074 Nov 23 19:28 workfunctions.c<br />  
-$`
+$
 <br />
+```
+
 ## Bugs
 
 ## Authors
