@@ -13,7 +13,7 @@ char **_prompt(void)
 	char *str = NULL;
 	char **command;
 
-	signal(SIGINT, siginthandler);
+	signal(SIGINT, &siginthandler);
 
 	while (1)
 	{
