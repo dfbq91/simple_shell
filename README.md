@@ -1,4 +1,4 @@
-# simple_shell
+B# simple_shell
 
 ## Table of contents
 * Description
@@ -90,5 +90,4 @@ $
 ## Bugs
 
 ## Authors
-> Diego Betancourt
-> Jackson Moreno
+> Diego Betancourt -  Jackson Moreno
