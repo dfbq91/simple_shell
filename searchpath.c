@@ -8,7 +8,7 @@ void *_getenv(const char *name)
 
 	for (**ptr = **env; *ptr != name; ptr++)
 		;
-	return(*ptr);
+	return (*ptr);
 }
 
 /**
@@ -19,16 +19,25 @@ void *_getenv(const char *name)
 
 char *searchpath(char **str)
 {
-	char *envi = getenv("PATH");
-	int i = 0;
-	int j = 0;
-	char *token = NULL;
-	char *copytoken = NULL;
-	char *newpath = NULL;
-	char **pathtocheck = NULL;
-	int position = 0;
-	char *slash = NULL;
+	char *envi, *token, *newpath, *newenvi, **pathtocheck, *slash;
+	int i, j, position = 0;
 	struct stat st;
+
+	envi = getenv("PATH");
+
+	newenvi = malloc(strlen(envi) + 1);
+	if (newenvi == NULL)
+	{
+		free(newenvi);
+		exit(EXIT_FAILURE);
+	}
+
+	token = malloc(strlen(envi) + 1);
+	if (token == NULL)
+	{
+		free(token);
+		exit(EXIT_FAILURE);
+	}
 
 	pathtocheck = malloc(300);
 	if (pathtocheck == NULL)
@@ -36,7 +45,7 @@ char *searchpath(char **str)
 		free(pathtocheck);
 		exit(EXIT_FAILURE);
 	}
-	slash = malloc(50);
+	slash = malloc(strlen(str[0]) + 1);
 	if (slash == NULL)
 	{
 		free(slash);
@@ -46,20 +55,12 @@ char *searchpath(char **str)
 	/*Agrega "/" al input*/
 	_strcpy(slash, "/");
 	_strcat(slash, str[0]);
-	printf("Envi: %s\n", envi);
 
-	token = strtok(envi, "=");
-	copytoken = token;
-	printf("Token: %s\n", token);
-	printf("Copytoken: %s\n", copytoken);
-	token = strtok(token, ":");
-	printf("Copy: %s\n", copytoken);
-	printf("tokenpreliminar %s\n\n", token);
+	strcpy(newenvi, envi);
+	token = strtok(newenvi, ":");
 
 	while (token != NULL)
 	{
-		printf("Path: %s\n", token);
-
 		pathtocheck[position] = token;
 
 		for (i = 0; pathtocheck[position][i] != '\0'; i++)
@@ -67,24 +68,28 @@ char *searchpath(char **str)
 		for (j = 0; slash[j]; j++)
 			;
 
-		newpath = malloc(sizeof(char *) * (i + j));
+		newpath = malloc(sizeof(char *) * (i + j + 1));
+		if (newpath == NULL)
+		{
+			free(newpath)
+			exit(0);
+		}
 
 		_strcpy(newpath, token);
 		_strcat(newpath, slash);
 
 		newpath[i + j] = '\0';
 
-		printf("newpath es igual: %s\n", newpath);
-
 		if (stat(newpath, &st) == 0)
 			return (newpath);
 
 		position++;
+
 		token = strtok(NULL, ":");
 		free(newpath);
 	}
 
 	pathtocheck[position] = NULL;
 
-	return(str[0]);
+	return (str[0]);
 }

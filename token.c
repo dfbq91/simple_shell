@@ -18,7 +18,6 @@ char **token(char *str)
 
 	str[i] = '\0';
 
-	printf("%d\n", i);
 	tokencomplete = malloc(i * sizeof(char *));
 
 	if (tokencomplete == NULL)
@@ -31,7 +30,6 @@ char **token(char *str)
 
 	while (token != NULL)
 	{
-		printf("%s\n", token);
 		tokencomplete[tokenposition] = token;
 		tokenposition++;
 		token = strtok(NULL, " ");

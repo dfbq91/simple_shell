@@ -26,16 +26,17 @@ int executor(char **token)
 	{
 		if (execve(newstr, token, NULL) == -1)
 		{
-			free(newstr);
-			free(token);
-			close(STDIN_FILENO);
+				//free(newstr);
+				//free(token);
+				close(STDIN_FILENO);
 		}
+		
 	}
 	else if (pid > 0)
 		wait(NULL);
 	else
 		perror("Fork Error");
 
-	free(token);
+	//free(token);
 	return (0);
 }

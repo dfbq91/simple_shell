@@ -39,7 +39,6 @@ char **_prompt(void)
 
 		command = token(str);
 		executor(command);
-		free(str);
 	}
 	free(str);
 	return (command);
