@@ -21,11 +21,13 @@ char *searchpath(char **str)
 {
 	char *envi = getenv("PATH");
 	int i = 0;
-	char *token;
-	char *newpath = malloc(50);
-	char **pathtocheck;
+	int j = 0;
+	char *token = NULL;
+	char *copytoken = NULL;
+	char *newpath = NULL;
+	char **pathtocheck = NULL;
 	int position = 0;
-	char *slash = malloc(50);
+	char *slash = NULL;
 	struct stat st;
 
 	pathtocheck = malloc(300);
@@ -34,14 +36,24 @@ char *searchpath(char **str)
 		free(pathtocheck);
 		exit(EXIT_FAILURE);
 	}
+	slash = malloc(50);
+	if (slash == NULL)
+	{
+		free(slash);
+		exit(EXIT_FAILURE);
+	}
 
 	/*Agrega "/" al input*/
 	_strcpy(slash, "/");
 	_strcat(slash, str[0]);
+	printf("Envi: %s\n", envi);
 
 	token = strtok(envi, "=");
-	printf("Complete path: %s\n", token);
+	copytoken = token;
+	printf("Token: %s\n", token);
+	printf("Copytoken: %s\n", copytoken);
 	token = strtok(token, ":");
+	printf("Copy: %s\n", copytoken);
 	printf("tokenpreliminar %s\n\n", token);
 
 	while (token != NULL)
@@ -50,18 +62,29 @@ char *searchpath(char **str)
 
 		pathtocheck[position] = token;
 
-		_strcpy(newpath, pathtocheck[position]);
+		for (i = 0; pathtocheck[position][i] != '\0'; i++)
+			;
+		for (j = 0; slash[j]; j++)
+			;
+
+		newpath = malloc(sizeof(char *) * (i + j));
+
+		_strcpy(newpath, token);
 		_strcat(newpath, slash);
 
-		printf("The newpath: %s\n", newpath);
+		newpath[i + j] = '\0';
 
-		/*if (stat(pathtocheck[position], &st) == 0)
-		  return (pathtocheck[position]);*/
+		printf("newpath es igual: %s\n", newpath);
+
+		if (stat(newpath, &st) == 0)
+			return (newpath);
+
 		position++;
 		token = strtok(NULL, ":");
+		free(newpath);
 	}
 
 	pathtocheck[position] = NULL;
 
-	return(*pathtocheck);
+	return(str[0]);
 }
