@@ -119,6 +119,9 @@ char *_strcpy(char *dest, char *src)
  */
 void siginthandler(int sig_int)
 {
-	signal(SIGINT, siginthandler);
-	fflush(stdout);
+	if (sig_int == 2)
+	{
+		fflush(stdout);
+		exit(0);
+	}
 }
