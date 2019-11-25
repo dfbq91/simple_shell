@@ -17,7 +17,7 @@ When a command is executed, the program will made the action that the user wish 
 
 
 ## Requeriments
-Compiled with Ubuntu 14.04 LTS using flags -Wall -Werror -Wextra and -pedantic.
+Compiled with Ubuntu 14.04 LTS using flags `-Wall -Werror -Wextra and -pedantic.`
 
 
 ## Learning objectives
@@ -44,7 +44,6 @@ workfunctions.c - Customized Functions called in other files.
 2) Use cd to change directories into the repository simple _shell: `cd simple_shell`
 3) Compile. We recommend use flags wall, werror, wextra and pedantic:` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh `
 4) Run the program. You can use interactive mode `./hsh` and type command, or non-interactive mode.
-
  example: `echo "ls" | ./hsh`
 
 
