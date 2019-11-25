@@ -43,7 +43,8 @@ workfunctions.c - Customized Functions called in other files.
 1) Clone this repository using git clone: `git clone https://github.com/dfbq91/simple_shell`
 2) Use cd to change directories into the repository simple _shell: `cd simple_shell`
 3) Compile. We recommend use flags wall, werror, wextra and pedantic:` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh `
-4) Run the program. You can use interactive mode `./hsh` and type command, or non-interactive mode, example: `echo "ls" | ./hsh`
+4) Run the program. You can use interactive mode `./hsh` and type command, or non-interactive mode, example:
+ `echo "ls" | ./hsh`
 
 
 ## Functionalities
