@@ -26,7 +26,7 @@ int executor(char **token, int inputcounter, char *argv)
 	newstr = searchpath(token); /*Get path env and concatenate user input*/
 	if (stat(newstr, &st) == -1)
 	{
-		free(newstr);
+		/*free(newstr);*/
 		command_err_message(token[0], inputcounter, argv);
 		return (0);
 	}
@@ -36,8 +36,6 @@ int executor(char **token, int inputcounter, char *argv)
 	{
 		if (execve(newstr, token, NULL) == -1)
 		{
-			free(newstr);
-			free(token);
 			close(STDIN_FILENO);
 		}
 	}

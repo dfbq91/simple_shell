@@ -26,20 +26,17 @@ char **_prompt(char **argv)
 		if (bytes_rd == EOF) /*When control + d is pressed*/
 		{
 			_putchar('\n');
-			free(str);
 			exit(0);
 		}
 
 		if (bytes_rd == 0)
 		{
 			_putchar('\n');
-			free(str);
 			exit(0);
 		}
 
 		if (bytes_rd == -1)
 		{
-			free(str);
 			perror("Getline Error");
 		}
 

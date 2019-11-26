@@ -69,10 +69,10 @@ char *searchpath(char **str)
 		/*If create path in newpath is an executable, return to execute*/
 		if (stat(newpath, &st) == 0)
 		{
-			free(newenvi);
-                        free(pathtocheck);
-                        free(slash);
-                        free(token);
+			/*free(newenvi);*/
+                        /*free(pathtocheck);*/
+                        /*free(slash);*/
+                        /*free(token);*/
 			return (newpath);
 		}
 
@@ -82,10 +82,12 @@ char *searchpath(char **str)
 	}
 
 	pathtocheck[position] = NULL;
+	/*
 	free(newenvi);
         free(pathtocheck);
         free(slash);
         free(newpath);
         free(token);
+	*/
 	return (str[0]);
 }
