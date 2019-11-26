@@ -21,13 +21,6 @@ char *searchpath(char **str)
 		exit(EXIT_FAILURE);
 	}
 
-	token = malloc(strlen(envi) + 1);
-	if (token == NULL)
-	{
-		free(token);
-		exit(EXIT_FAILURE);
-	}
-
 	pathtocheck = malloc(300);
 	if (pathtocheck == NULL)
 	{
