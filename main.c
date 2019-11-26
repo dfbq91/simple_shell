@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * main - Call promt
+ * main - Call function _prompt
  *
  * Return: Always sucessfull
  */
