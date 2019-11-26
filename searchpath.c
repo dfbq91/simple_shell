@@ -24,12 +24,15 @@ char *searchpath(char **str)
 	pathtocheck = malloc(300);
 	if (pathtocheck == NULL)
 	{
+		free(newenvi);
 		free(pathtocheck);
 		exit(EXIT_FAILURE);
 	}
 	slash = malloc(strlen(str[0]) + 2);
 	if (slash == NULL)
 	{
+		free(newenvi);
+		free(pathtocheck);
 		free(slash);
 		exit(EXIT_FAILURE);
 	}
@@ -50,6 +53,9 @@ char *searchpath(char **str)
 		newpath = malloc(sizeof(char *) * (i + j + 1));
 		if (newpath == NULL)
 		{
+			free(newenvi);
+			free(pathtocheck);
+			free(slash);
 			free(newpath);
 			exit(0);
 		}
@@ -62,18 +68,24 @@ char *searchpath(char **str)
 
 		/*If create path in newpath is an executable, return to execute*/
 		if (stat(newpath, &st) == 0)
+		{
+			free(newenvi);
+                        free(pathtocheck);
+                        free(slash);
+                        free(token);
 			return (newpath);
+		}
 
 		position++;
-
 		token = strtok(NULL, ":");
 		free(newpath);
 	}
 
 	pathtocheck[position] = NULL;
-
-	/*free(pathtocheck);*/
-	/*free(newenvi)*/;
-
+	free(newenvi);
+        free(pathtocheck);
+        free(slash);
+        free(newpath);
+        free(token);
 	return (str[0]);
 }
