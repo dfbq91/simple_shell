@@ -10,6 +10,7 @@ int executor(char **token)
 {
 	int pid;
 	char *goexit = "exit";
+	char *envir = "env";
 	char *newstr;
 
 	if (_strcmp(token[0], goexit) == 0)
@@ -17,6 +18,12 @@ int executor(char **token)
 		free(token[0]);
 		free(token);
 		exit(0);
+	}
+
+	if (_strcmp(token[0], envir) == 0)
+	{
+		print_env();
+		return (0);
 	}
 
 	newstr = searchpath(token);
@@ -30,7 +37,6 @@ int executor(char **token)
 				//free(token);
 				close(STDIN_FILENO);
 		}
-		
 	}
 	else if (pid > 0)
 		wait(NULL);

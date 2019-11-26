@@ -13,6 +13,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+extern char **environ;
 int _putchar(char c);
 char **_prompt(void);
 int executor(char **token);
@@ -25,5 +26,5 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char *searchpath(char **str);
 void siginthandler(int sig_int);
-
+void print_env(void);
 #endif

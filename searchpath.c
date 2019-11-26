@@ -71,7 +71,7 @@ char *searchpath(char **str)
 		newpath = malloc(sizeof(char *) * (i + j + 1));
 		if (newpath == NULL)
 		{
-			free(newpath)
+			free(newpath);
 			exit(0);
 		}
 
