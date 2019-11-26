@@ -12,6 +12,7 @@ int executor(char **token)
 	char *goexit = "exit";
 	char *envir = "env";
 	char *newstr;
+	struct stat st;
 
 	if (_strcmp(token[0], goexit) == 0) /*Go out when exit is typed*/
 	{
@@ -23,6 +24,11 @@ int executor(char **token)
 		print_env();
 
 	newstr = searchpath(token); /*Get path env and concatenate user input*/
+	if (stat(newstr, &st) == -1)
+	{
+		perror("command not found");
+		return (0);
+	}
 
 	pid = fork();
 	if (pid == 0) /*Executed by the son and finish with execve*/
