@@ -53,22 +53,46 @@ int _strlen(char *s)
  * Return: nothing
  */
 
-/*
-void command_err_message(char *is_not_command)
+void command_err_message(char *is_not_command, int inputcounter, char *argv)
 {
-	char *c = ": Command not found";
-	int len1;
-	int len2;
+	char *c = ": not found";
 	int i = 0;
 
-	len1 = getlenght(c);
+	for (i = 0; argv[i] != '\0'; i++)
+		_putchar(argv[i]);
+	fflush(stdout);
+	_putchar(':');
+	fflush(stdout);
+	_putchar(' ');
+	fflush(stdout);
 
-		write(1, is_not_command, len);
-	for (i = 0; is_not_command[i] != NULL; i++)
+	if (inputcounter <= 9)
+		_putchar(inputcounter + '0');
+	else
+	{
+		_putchar((inputcounter / 10) + '0');
+		_putchar((inputcounter % 10) + '0');
+	}
+
+	fflush(stdout);
+	_putchar(':');
+	fflush(stdout);
+	_putchar(' ');
+	fflush(stdout);
+
+	for (i = 0; is_not_command[i] != '\0'; i++)
 		_putchar(is_not_command[i]);
+
+	fflush(stdout);
+
+	for (i = 0; c[i] != '\0'; i++)
+		_putchar(c[i]);
+
+	fflush(stdout);
+
 	_putchar('\n');
+	fflush(stdout);
 }
-*/
 
 /**
  * _strcat - Concatenate two strings.

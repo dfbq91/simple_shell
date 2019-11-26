@@ -10,7 +10,7 @@ char **token(char *str)
 {
 	char *token, **tokencomplete;
 	int i, tokenposition = 0;
-
+	char delimit[]=" \t\r\n\v\f";
 
 	for (i = 0; str[i] != '\n'; i++)
 		;
@@ -23,13 +23,13 @@ char **token(char *str)
 		exit(0);
 	}
 
-	token = strtok(str, " ");
+	token = strtok(str, delimit);
 
 	while (token != NULL)
 	{
 		tokencomplete[tokenposition] = token;
 		tokenposition++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, delimit);
 	}
 	tokencomplete[tokenposition] = NULL;
 

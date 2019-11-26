@@ -6,9 +6,9 @@
  * Return: never returns
  */
 
-char **_prompt(void)
+char **_prompt(char **argv)
 {
-	int bytes_rd = 0;
+	int bytes_rd = 0, inputcounter = 1;
 	size_t n_bytes = 1024;
 	char *str = NULL, **command;
 
@@ -30,6 +30,13 @@ char **_prompt(void)
 			exit(0);
 		}
 
+		if (bytes_rd == 0)
+		{
+			_putchar('\n');
+			free(str);
+			exit(0);
+		}
+
 		if (bytes_rd == -1)
 		{
 			free(str);
@@ -37,7 +44,8 @@ char **_prompt(void)
 		}
 
 		command = token(str);
-		executor(command);
+		executor(command, inputcounter, argv[0]);
+		inputcounter++;
 	}
 	/*free(str);*/
 	return (command);

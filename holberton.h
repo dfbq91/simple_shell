@@ -15,12 +15,12 @@
 
 extern char **environ;
 int _putchar(char c);
-char **_prompt(void);
-int executor(char **token);
+char **_prompt(char **argv);
+int executor(char **token, int inputcounter, char *argv);
 char **token(char *str);
 int _strcmp(char *s1, char *s2);
 int dollar(void);
-void command_err_message(char *is_not_command);
+void command_err_message(char *is_not_command, int inputcounter, char *argv);
 int getlenght(char *str);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);

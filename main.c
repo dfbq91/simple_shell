@@ -1,15 +1,16 @@
 #include "holberton.h"
 
 /**
- * main - Call all functions ($ ) and splits a string
+ * main - Call promt
  *
- * Return: ....
+ * Return: Always sucessfull
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
+	(void)argc;
 
-	_prompt();
+	_prompt(argv);
 
 	return (0);
 }

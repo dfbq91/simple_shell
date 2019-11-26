@@ -6,7 +6,7 @@
  * Return: not return, on error return -1.
  */
 
-int executor(char **token)
+int executor(char **token, int inputcounter, char *argv)
 {
 	int pid;
 	char *goexit = "exit";
@@ -26,7 +26,7 @@ int executor(char **token)
 	newstr = searchpath(token); /*Get path env and concatenate user input*/
 	if (stat(newstr, &st) == -1)
 	{
-		perror("command not found");
+		command_err_message(token[0], inputcounter, argv);
 		return (0);
 	}
 
