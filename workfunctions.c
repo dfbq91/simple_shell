@@ -30,21 +30,22 @@ int _putchar(char c)
 }
 
 /**
- * getlenght - get lenght of string typed for user.
- * @str: str typed for user
- * Return: lenght of string
+ * _strlen - give the lenght of a string
+ *@s: int pointer type variable
+ * Return: Always 0.
  */
 
-/*
-int getlenght(char *str)
+int _strlen(char *s)
 {
-	int i;
+	int c = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
-		;
-	return (i);
+	while (s[c] != '\0')
+	{
+		c++;
+	}
+	return (c);
+
 }
-*/
 
 /**
  * command_err_message - return err message for command that doesn't exist
@@ -90,38 +91,4 @@ char *_strcat(char *dest, char *src)
 	}
 	dest[i + 1] = '\0';
 	return (dest);
-}
-
-/**
- * _strcpy - copy a string into a buffer pointed
- * @dest: char type array pointer
- * @src: char type integer variable
- * Return: dest
- */
-
-char *_strcpy(char *dest, char *src)
-{
-	int j = 0;
-
-	while (src[j] != '\0')
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	dest[j] = '\0';
-	return (dest);
-}
-
-/**
- * siginthandler - keep shell when user press control + c
- * @sig_int: handler
- * Return: nothing
- */
-void siginthandler(int sig_int)
-{
-	if (sig_int == 2)
-	{
-		fflush(stdout);
-		exit(0);
-	}
 }

@@ -13,36 +13,52 @@ int executor(char **token)
 	char *envir = "env";
 	char *newstr;
 
-	if (_strcmp(token[0], goexit) == 0)
+	if (_strcmp(token[0], goexit) == 0) /*Go out when exit is typed*/
 	{
 		free(token[0]);
 		free(token);
 		exit(0);
 	}
-
-	if (_strcmp(token[0], envir) == 0)
-	{
+	if (_strcmp(token[0], envir) == 0) /*Print environment when env is typed*/
 		print_env();
-		return (0);
-	}
 
-	newstr = searchpath(token);
+	newstr = searchpath(token); /*Get path env and concatenate user input*/
 
 	pid = fork();
-	if (pid == 0) /* Lo ejecuta solo el hijo y termina con execve*/
+	if (pid == 0) /*Executed by the son and finish with execve*/
 	{
 		if (execve(newstr, token, NULL) == -1)
 		{
-				//free(newstr);
-				//free(token);
-				close(STDIN_FILENO);
+			/*free(newstr);*/
+			/*free(token);*/
+			close(STDIN_FILENO);
 		}
 	}
-	else if (pid > 0)
+	else if (pid > 0) /*Executed by parent and wait son finishes*/
 		wait(NULL);
 	else
 		perror("Fork Error");
 
-	//free(token);
+	/*free(token);*/
 	return (0);
+}
+
+/**
+ * print_env - print environment with command env
+ * Return: nothing.
+ */
+
+void print_env(void)
+{
+	int i, j;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		for (j = 0; environ[i][j] != '\0'; j++)
+		{
+			_putchar(environ[i][j]);
+		}
+
+		_putchar('\n');
+	}
 }

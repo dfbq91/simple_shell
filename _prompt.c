@@ -10,21 +10,20 @@ char **_prompt(void)
 {
 	int bytes_rd = 0;
 	size_t n_bytes = 1024;
-	char *str = NULL;
-	char **command;
+	char *str = NULL, **command;
 
-	signal(SIGINT, &siginthandler);
+	signal(SIGINT, sighandler);
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			dollar(); /*Llama a la función dollar que imprime el dolar*/
+			dollar(); /*Call fun dollar who prints a dollar(prompt)*/
 		bytes_rd = getline(&str, &n_bytes, stdin);
 
-		if (bytes_rd == 1) /*Si no se ingresa nada en el shell*/
+		if (bytes_rd == 1) /*Continue after user imput is typed*/
 			continue;
 
-		if (bytes_rd == EOF)
+		if (bytes_rd == EOF) /*When control + d is pressed*/
 		{
 			_putchar('\n');
 			free(str);
@@ -40,7 +39,7 @@ char **_prompt(void)
 		command = token(str);
 		executor(command);
 	}
-	free(str);
+	/*free(str);*/
 	return (command);
 }
 
