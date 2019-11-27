@@ -48,8 +48,10 @@ int _strlen(char *s)
 }
 
 /**
- * command_err_message - return err message for command that doesn't exist
+ * command_err_message - print err message for command that doesn't exist
  * @is_not_command: command that doesn't exist
+ * @inputcounter: number of inputs (enter pressed)
+ * @argv: execution of shell
  * Return: nothing
  */
 

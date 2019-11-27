@@ -2,7 +2,8 @@
 
 /**
  * main - Call function _prompt
- *
+ * @argc: Number of arguments
+ * @argv: Each argument including name of executable
  * Return: Always sucessfull
  */
 

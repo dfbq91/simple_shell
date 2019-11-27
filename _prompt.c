@@ -2,7 +2,7 @@
 
 /**
  * _prompt - Print prompt ($ ) and call fun for to split a string
- *
+ * @argv: name of program
  * Return: never returns
  */
 

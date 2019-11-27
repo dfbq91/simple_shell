@@ -3,6 +3,8 @@
 /**
  * executor - execute command from stdin
  * @token: array of each word of the string
+ * @inputcounter: number of user inputs (enter pressed)
+ * @argv: user input
  * Return: not return, on error return -1.
  */
 
@@ -26,8 +28,15 @@ int executor(char **token, int inputcounter, char *argv)
 	newstr = searchpath(token); /*Get path env and concatenate user input*/
 	if (stat(newstr, &st) == -1)
 	{
-		/*free(newstr);*/
+/*free(newstr);*/
 		command_err_message(token[0], inputcounter, argv);
+		return (0);
+	}
+
+	printf("Access: %d\n", access("/bin/ls", X_OK));
+	if (access(newstr, X_OK) == -1)
+	{
+		permission_err_message(token[0], inputcounter, argv);
 		return (0);
 	}
 
@@ -36,6 +45,7 @@ int executor(char **token, int inputcounter, char *argv)
 	{
 		if (execve(newstr, token, NULL) == -1)
 		{
+			perror("Error de execve");
 			close(STDIN_FILENO);
 		}
 	}

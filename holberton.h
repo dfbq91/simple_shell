@@ -29,5 +29,6 @@ void sighandler(int sig_int);
 void print_env(void);
 char *_getenv(const char *name);
 int _strlen(char *s);
+void permission_err_message(char *no_access, int inputcounter, char *argv);
 
 #endif

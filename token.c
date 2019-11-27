@@ -10,7 +10,7 @@ char **token(char *str)
 {
 	char *token, **tokencomplete;
 	int i, tokenposition = 0;
-	char delimit[]=" \t\r\n\v\f";
+	char delimit[] = " \t\r\n\v\f";
 
 	for (i = 0; str[i] != '\n'; i++)
 		;
