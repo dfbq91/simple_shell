@@ -35,10 +35,10 @@ Compiled with Ubuntu 14.04 LTS using flags `-Wall -Werror -Wextra and -pedantic.
 * What is EOF / “end-of-file”?
 
 ## What is the file structure
-AUTHORS: List of the authors and contributors to this repository.
-man_1_simple_shell - Manual page.
-holberton.h - Header file.
-workfunctions.c - Customized Functions called in other files.
+AUTHORS: List of the authors and contributors to this repository. 
+man_1_simple_shell - Manual page. 
+holberton.h - Header file. 
+workfunctions.c - Customized Functions called in other files. 
 
 
 ## How to install
@@ -50,19 +50,15 @@ workfunctions.c - Customized Functions called in other files.
 
 
 ## Functionalities
-- [x] GFM task list 1
-- [x] GFM task list 1
-- [x] GFM task list 1
-- [x] GFM task list 1
-- [x] GFM task list 1
+- [x] ls
+- [x] pwd
+- [x] echo
+- [x] cat
+- [ ] 
 
 
 ### Builtings
-- [ ] GFM task list 1
-- [ ] GFM task list 1
-- [x] GFM task list 1
-- [x] GFM task list 1
-- [x] GFM task list 1
+- [X] Don't have builting created.
 
 
 ## Using example
@@ -89,6 +85,6 @@ $
 ```
 
 ## Bugs
-
+> We have some memory leaks on our project, and we have some functions that exceed the limit of lines.
 ## Authors
 > Diego Betancourt -  Jackson Moreno
