@@ -1,4 +1,6 @@
 # simple_shell
+simple shell (hsh) is a command language interpreter that shall execute commands read from a command line string and the standard input.
+simple_shell program was build using the C language, and was designed to interact with a linux distribution or unix like system that uses system calls and other commands found in the linux PATH.
 
 ## Table of contents
 * Description
@@ -54,7 +56,6 @@ workfunctions.c - Customized Functions called in other files.
 - [x] pwd
 - [x] echo
 - [x] cat
-- [ ] 
 
 
 ### Builtings
