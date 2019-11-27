@@ -22,21 +22,17 @@ int executor(char **token, int inputcounter, char *argv)
 	}
 	if (_strcmp(token[0], envir) == 0) /*Print environment when env is typed*/
 		print_env();
-
 	newstr = searchpath(token); /*Get path env and concatenate user input*/
 	if (stat(newstr, &st) == -1)
 	{
-/*free(newstr);*/
 		command_err_message(token[0], inputcounter, argv);
 		return (0);
 	}
-
 	if (access(newstr, X_OK) == -1)
 	{
 		permission_err_message(token[0], inputcounter, argv);
 		return (0);
 	}
-
 	pid = fork();
 	if (pid == 0) /*Executed by the son and finish with execve*/
 	{
@@ -50,10 +46,8 @@ int executor(char **token, int inputcounter, char *argv)
 		wait(NULL);
 	else
 		perror("Fork Error");
-
 	return (0);
 }
-
 /**
  * print_env - print environment with command env
  * Return: nothing.
