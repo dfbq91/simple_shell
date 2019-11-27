@@ -12,9 +12,9 @@ char *searchpath(char **str)
 	int i, j, position = 0;
 	struct stat st;
 
-	envi = getenv("PATH");
+	envi = _getenv("PATH");
 
-	newenvi = malloc(strlen(envi) + 1);
+	newenvi = malloc(_strlen(envi) + 1);
 
 	if (newenvi == NULL)
 	{
@@ -29,7 +29,7 @@ char *searchpath(char **str)
 		free(pathtocheck);
 		exit(EXIT_FAILURE);
 	}
-	slash = malloc(strlen(str[0]) + 2);
+	slash = malloc(_strlen(str[0]) + 2);
 	if (slash == NULL)
 	{
 		free(newenvi);
@@ -41,7 +41,7 @@ char *searchpath(char **str)
 	_strcpy(slash, "/"); /*Copy "/" to slash variable*/
 	_strcat(slash, str[0]); /*Concatenate the user input to the "/"*/
 
-	strcpy(newenvi, envi); /*Copy path env value to newenvi*/
+	_strcpy(newenvi, envi); /*Copy path env value to newenvi*/
 	token = strtok(newenvi, ":");
 
 	while (token != NULL)
@@ -83,12 +83,5 @@ char *searchpath(char **str)
 	}
 
 	pathtocheck[position] = NULL;
-	/*
-	free(newenvi);
-	free(pathtocheck);
-	free(slash);
-	free(newpath);
-	free(token);
-	*/
 	return (str[0]);
 }

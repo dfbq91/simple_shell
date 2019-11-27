@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 /**
  * executor - execute command from stdin
  * @token: array of each word of the string
@@ -7,7 +6,6 @@
  * @argv: user input
  * Return: not return, on error return -1.
  */
-
 int executor(char **token, int inputcounter, char *argv)
 {
 	int pid;
@@ -33,7 +31,6 @@ int executor(char **token, int inputcounter, char *argv)
 		return (0);
 	}
 
-	printf("Access: %d\n", access("/bin/ls", X_OK));
 	if (access(newstr, X_OK) == -1)
 	{
 		permission_err_message(token[0], inputcounter, argv);
