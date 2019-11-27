@@ -1,6 +1,6 @@
 # simple_shell
-simple shell (hsh) is a command language interpreter that shall execute commands read from a command line string and the standard input.
-simple_shell program was build using the C language, and was designed to interact with a linux distribution or unix like system that uses system calls and other commands found in the linux PATH.
+**simple shell (hsh)** is a command language interpreter that shall execute commands read from a command line string and the standard input.
+**simple_shell** program was build using the C language, and was designed to interact with a linux distribution or unix like system that uses system calls and other commands found in the linux PATH.
 
 ## Table of contents
 * Description
@@ -37,10 +37,17 @@ Compiled with Ubuntu 14.04 LTS using flags `-Wall -Werror -Wextra and -pedantic.
 * What is EOF / “end-of-file”?
 
 ## What is the file structure
-AUTHORS: List of the authors and contributors to this repository. 
-man_1_simple_shell - Manual page. 
-holberton.h - Header file. 
-workfunctions.c - Customized Functions called in other files. 
+**AUTHORS** - this file contains a list of contributors of this project.
+**executor.c** - this file perform operations of execute commands on simple_shell.
+**holberton.h** - file contains all prototypes of functions that we used.
+**main.c** - file contains the entry point to program.
+**man_1_simple_shell** - this file
+**_prompt.c** - file that contains the call to prompt and catch the user input.
+**README.md** - file contains a brief description of how works the simple_shell.
+**searchpath.c** - file used to find the valid path to commands that need to be executed.
+**token.c** - file contains the routines to split the user input in commands.
+**workfunctions.c** - file contains helper functions.
+**workfunctions2.c** - file contains helper functions.
 
 
 ## How to install
