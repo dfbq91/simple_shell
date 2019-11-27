@@ -25,7 +25,7 @@ char **_prompt(char **argv)
 
 		if (bytes_rd == EOF) /*When control + d is pressed*/
 		{
-			_putchar('\n');
+			/*_putchar('\n');*/
 			exit(0);
 		}
 
@@ -44,7 +44,6 @@ char **_prompt(char **argv)
 		executor(command, inputcounter, argv[0]);
 		inputcounter++;
 	}
-	/*free(str);*/
 	return (command);
 }
 

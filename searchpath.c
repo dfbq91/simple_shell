@@ -1,11 +1,9 @@
 #include "holberton.h"
-
 /**
  * searchpath - take a string(command) for to search its path
  * @str: string to concatenate with a path.
  * Return: nothing.
  */
-
 char *searchpath(char **str)
 {
 	char *envi, *token, *newpath, *newenvi, **pathtocheck, *slash;
@@ -13,15 +11,12 @@ char *searchpath(char **str)
 	struct stat st;
 
 	envi = _getenv("PATH");
-
 	newenvi = malloc(_strlen(envi) + 1);
-
 	if (newenvi == NULL)
 	{
 		free(newenvi);
 		exit(EXIT_FAILURE);
 	}
-
 	pathtocheck = malloc(300);
 	if (pathtocheck == NULL)
 	{
@@ -37,17 +32,13 @@ char *searchpath(char **str)
 		free(slash);
 		exit(EXIT_FAILURE);
 	}
-
 	_strcpy(slash, "/"); /*Copy "/" to slash variable*/
 	_strcat(slash, str[0]); /*Concatenate the user input to the "/"*/
-
 	_strcpy(newenvi, envi); /*Copy path env value to newenvi*/
 	token = strtok(newenvi, ":");
-
 	while (token != NULL)
 	{
 		pathtocheck[position] = token;
-
 		/*Get lenght of path env value and user input to allocate in mem*/
 		i = _strlen(pathtocheck[position]);
 		j = _strlen(slash);
@@ -60,28 +51,17 @@ char *searchpath(char **str)
 			free(newpath);
 			exit(0);
 		}
-
 		/*Create complete path (path env value and user input*/
 		_strcpy(newpath, token);
 		_strcat(newpath, slash);
-
 		newpath[i + j] = '\0';
-
 		/*If create path in newpath is an executable, return to execute*/
 		if (stat(newpath, &st) == 0)
-		{
-/*free(newenvi);*/
-/*free(pathtocheck);*/
-/*free(slash);*/
-/*free(token);*/
 			return (newpath);
-		}
-
 		position++;
 		token = strtok(NULL, ":");
 		free(newpath);
 	}
-
 	pathtocheck[position] = NULL;
 	return (str[0]);
 }
