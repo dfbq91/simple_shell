@@ -91,6 +91,8 @@ total 56
 $
 
 ```
+## How it works: flowchart
+![flowchart_simple_shell](https://github.com/dfbq91/simple_shell/blob/master/simple_shell.png)
 
 ## Bugs
 > We have some memory leaks on our project, and we have some functions that exceed the limit of lines.
