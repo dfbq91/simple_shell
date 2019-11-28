@@ -22,7 +22,7 @@ char **token(char *str)
 			j++;
 	}
 
-	tokencomplete = malloc(j * sizeof(char*));
+	tokencomplete = malloc(j * sizeof(char *));
 	if (tokencomplete == NULL)
 	{
 		free(tokencomplete);
