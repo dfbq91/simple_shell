@@ -16,7 +16,7 @@
 extern char **environ;
 int _putchar(char c);
 char **_prompt(char **argv);
-int executor(char **token, int inputcounter, char *argv);
+char *executor(char **token, int inputcounter, char *argv);
 char **token(char *str);
 int _strcmp(char *s1, char *s2);
 int dollar(void);

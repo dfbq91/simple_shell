@@ -6,13 +6,13 @@
  * @argv: user input
  * Return: not return, on error return -1.
  */
-int executor(char **token, int inputcounter, char *argv)
+char *executor(char **token, int inputcounter, char *argv)
 {
-	int pid;
-	char *goexit = "exit";
-	char *envir = "env";
-	char *newstr;
+	int pid, status, exit_status;
+	char *goexit = "exit", *envir = "env", *newstr;
 	struct stat st;
+
+	newstr = searchpath(token); /*Get path env and concatenate user input*/
 
 	if (_strcmp(token[0], goexit) == 0) /*Go out when exit is typed*/
 	{
@@ -20,33 +20,49 @@ int executor(char **token, int inputcounter, char *argv)
 		free(token);
 		exit(0);
 	}
+
 	if (_strcmp(token[0], envir) == 0) /*Print environment when env is typed*/
+	{
 		print_env();
-	newstr = searchpath(token); /*Get path env and concatenate user input*/
+		return (newstr);
+	}
+
 	if (stat(newstr, &st) == -1)
 	{
 		command_err_message(token[0], inputcounter, argv);
-		return (0);
+		return (newstr);
 	}
+
 	if (access(newstr, X_OK) == -1)
 	{
 		permission_err_message(token[0], inputcounter, argv);
-		return (0);
+		return (newstr);
 	}
+
 	pid = fork();
+
 	if (pid == 0) /*Executed by the son and finish with execve*/
 	{
 		if (execve(newstr, token, NULL) == -1)
 		{
 			perror("Error de execve");
-			close(STDIN_FILENO);
+			exit(127);
 		}
 	}
 	else if (pid > 0) /*Executed by parent and wait son finishes*/
-		wait(NULL);
+	{
+		wait(&status);
+		if (WIFEXITED(status))
+		{
+			exit_status = WEXITSTATUS(status);
+			(void)exit_status;
+		}
+
+	}
 	else
 		perror("Fork Error");
-	return (0);
+
+	return (newstr);
 }
 /**
  * print_env - print environment with command env

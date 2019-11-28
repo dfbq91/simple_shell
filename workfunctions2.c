@@ -109,3 +109,19 @@ void permission_err_message(char *no_access, int inputcounter, char *argv)
 	_putchar('\n');
 	fflush(stdout);
 }
+
+/**
+ * _atoi - convert a string (number) as an arg and returns its as an int
+ * @str: string to convert in a int
+ * Return: string as a number
+ */
+
+int _atoi(char *str)
+{
+	int var = 0, i;
+
+	for (i = 0; str[i] != '\0'; ++i)
+		var = var * 10 + str[i] - '0';
+
+	return (var);
+}
